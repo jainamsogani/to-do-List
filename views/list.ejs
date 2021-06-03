@@ -1,0 +1,26 @@
+<%- include("header") -%>
+
+  <body>
+
+    <div class="box" id="heading">
+    <h1><%=headTitle%></h1>
+  </div>
+
+   <div class="box">
+        <%for(var i=0 ; i<item.length ; i++){%>
+          <div class="item">
+          <input type="checkbox">
+        <p> <%= item[i] %> </p>
+      </div>
+        <%}%>
+
+        <form class="box newItem" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+          <button type="submit" name="list" value=<%= headTitle %>>+</button>
+        </form>
+
+      </div>
+
+  </body>
+
+  <%- include("footer") -%>
