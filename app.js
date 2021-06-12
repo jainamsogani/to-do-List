@@ -11,9 +11,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/todolistDB', {
-  useNewUrlParser: true,
+mongoose.connect('mongodb+srv://dbUser:dbuser@cluster0.dewgd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  useNewUrlParser: true, useUnifiedTopology: true 
 });
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', ()=>{
+    console.log("Connected to db");
+})
 
 const itemsSchema = {
   name: String,
